@@ -1,0 +1,105 @@
+import java.util.ArrayList;
+
+/**
+   Implements a sorted list of words
+
+   @author  TODO Your Name
+   @version TODO Date
+
+   @author Period - TODO Your Period
+   @author Assignment - Java Methods 13.4 Lab: Keeping Things in Order
+
+   @author Sources - TODO list collaborators
+ */
+public class SortedWordList extends java.util.ArrayList<String>
+{
+    private ArrayList<String> sortedArrayList;
+    public SortedWordList() {
+        sortedArrayList = new ArrayList<String>();
+    }
+    
+    public SortedWordList(int capacity) {
+        sortedArrayList = new ArrayList<String>(capacity);
+    }
+    
+    public boolean contains(String s) {
+        int left = 0;
+        int right = sortedArrayList.size() - 1;
+        while (left <= right) {
+            int middle = (left + right) / 2;
+            if (s.equalsIgnoreCase(sortedArrayList.get(middle))) {
+                return true;
+            }
+            else if (s.compareToIgnoreCase(sortedArrayList.get(middle)) < 1) {
+                right = middle - 1;
+            }
+            else {
+                left = middle + 1;
+            }
+        }
+        return false;
+    }
+    
+    public int indexOf(String s) {
+        int left = 0;
+        int right = sortedArrayList.size() - 1;
+        while (left <= right) {
+            int middle = (left + right) / 2;
+            if (s.equals(sortedArrayList.get(middle))) {
+                return middle;
+            }
+            else if (s.compareTo(sortedArrayList.get(middle)) < 1) {
+                right = middle - 1;
+            }
+            else {
+                left = middle + 1;
+            }
+        }
+        return -1;
+    }
+
+    public String set(int i, String word) {
+        if (word.compareToIgnoreCase(sortedArrayList.get(i - 1)) < 0 || word.
+            compareToIgnoreCase(sortedArrayList.get(i + 1)) > 0 || word.
+            equalsIgnoreCase(sortedArrayList.get(i - 1)) || word.
+            equalsIgnoreCase(sortedArrayList.get(i + 1))) {
+            throw new IllegalArgumentException("word =" + word + "i =" + i);
+        }
+        else {
+            super.set(i, word);
+            return word;
+        }
+    }
+    
+    public void add(int i, String word) {
+        if (word.compareToIgnoreCase(sortedArrayList.get(i - 1)) < 0 || word.
+            compareToIgnoreCase(sortedArrayList.get(i + 1)) > 0 || word.
+            equalsIgnoreCase(sortedArrayList.get(i - 1)) || word.
+            equalsIgnoreCase(sortedArrayList.get(i + 1))) {
+            throw new IllegalArgumentException("word =" + word + "i =" + i);
+        }
+        else {
+            add(word);
+        }
+    }
+    
+    public boolean add(String word) {
+        if (contains(word)) {
+            return false;
+        }
+        else {
+            int left = 0;
+            int right = sortedArrayList.size() - 1;
+            while (left <= right) {
+                int middle = (left + right) / 2;
+                if (word.compareTo(sortedArrayList.get(middle)) < 1) {
+                    right = middle - 1;
+                }
+                else {
+                    left = middle + 1;
+                }
+            }
+            return false;
+        }
+    }
+}

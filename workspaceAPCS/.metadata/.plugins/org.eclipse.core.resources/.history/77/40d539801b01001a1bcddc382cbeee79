@@ -1,0 +1,69 @@
+import java.awt.Color;
+import java.awt.geom.*;
+import java.util.*;
+import gpdraw.*;
+
+/**
+ * TODO Write a one-sentence summary of your class here.
+ * TODO Follow it with additional details about its purpose, what abstraction
+ * it represents, and how to use it.
+ *
+ * @author  Richard Cao
+ * @version 11/6
+ *
+ * @author  Period - 3
+ * @author  Assignment - TODO Assignment Name
+ * 
+ * @author  Sources - TODO list collaborators
+ */
+public class IrregularPolygon
+{
+    private DrawingTool pen = new DrawingTool( new SketchPad( 300, 300, 0 ) );
+    private ArrayList<Point2D.Double> myPolygon;
+
+    //constuctors
+    
+    public IrregularPolygon()
+    {
+
+    }
+
+    // public methods
+
+    public void add( Point2D.Double aPoint )
+    {
+        myPolygon.add(aPoint);
+    }
+
+    public double perimeter()
+    {
+        
+    }
+
+    public double area()
+    {
+        double sum = 0;
+        for (int i = 0; i < myPolygon.size(); i++) {
+            if (i < myPolygon.size() - 1) {
+                sum += myPolygon.get(i).getX() * myPolygon.get(i + 1).getY();
+            }
+            else {
+                sum += myPolygon.get(i).getX() * myPolygon.get(0).getY();
+            }
+        }
+        for (int i = 0; i < myPolygon.size(); i++) {
+            if (i < myPolygon.size() - 1) {
+                sum -= myPolygon.get(i).getY() * myPolygon.get(i + 1).getX();
+            }
+            else {
+                sum -= myPolygon.get(i).getY() * myPolygon.get(0).getX();
+            }
+        }
+        return Math.abs(sum /= 2);
+    }
+
+    public void draw()
+    {
+
+    }
+}

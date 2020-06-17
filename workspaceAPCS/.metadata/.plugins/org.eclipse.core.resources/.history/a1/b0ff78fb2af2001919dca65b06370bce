@@ -1,0 +1,122 @@
+import java.util.Scanner;
+/**
+   Converts English to Piglatin
+   Type in text to convert to Piglatin
+
+   @author  Richard Cao
+   @version 10/18
+
+   @author  Period - 3
+   @author  Assignment - Piglatinator
+
+   @author  Sources - Richard Cao
+ */
+public class PiglatinAnalyzer
+{
+    private String text;
+
+    // Constructor: saves the text string
+    /**
+     * Constructor
+     * @param text to save
+     */
+    public PiglatinAnalyzer(String text)
+    {
+        this.text = text;
+    }
+
+    /**
+     * Converts a string to it piglatin form according to the following rules:
+     *   a. If there are no vowels in englishWord, then pigLatinWord is just
+     *      englishWord + "ay". (There are ten vowels: 'a', 'e', 'i', 'o',
+     *      and 'u', and their uppercase counterparts.)
+     *   b. Else, if englishWord begins with a vowel, then pigLatinWord is just
+     *      englishWord + "yay".
+     *   c. Otherwise (if englishWord has a vowel in it and yet doesn't start
+     *      with a vowel), then pigLatinWord is end + start + "ay", where end
+     *      and start are defined as follows:
+     *        1. Let start be all of englishWord up to (but not including) its
+     *           first vowel.
+     *        2. Let end be all of englishWord from its first vowel on.
+     *        3. But, if englishWord is capitalized, then capitalize end and
+     *           "uncapitalize" start.
+     *
+     * @return   piglatin version of text as a String
+     */
+    public String phraseToPigLatin()
+    {
+        String phraseToTranslate = text;
+        String translation = "";
+        String delineators = " ,.?!;:-\"";
+        boolean foundWord = false;
+        int start = -1;
+        int end = -1;
+        for (int i = 0; i < phraseToTranslate.length(); i++) {
+            if (!delineators.contains(phraseToTranslate.substring(i, i + 1)) && !foundWord) {
+                foundWord = true;
+                start = i;
+            }
+            if (foundWord = true && delineators.contains(phraseToTranslate.substring(i, i + 1))) {
+                end = i;
+            }
+            if (start != -1 && end != -1) {
+                translation += wordToPigLatin(phraseToTranslate.substring(start, end));
+                System.out.println(start + " " + end);
+                System.out.println(phraseToTranslate.substring(start, end));
+                foundWord = false;
+                start = -1;
+                end = -1;
+            }
+        }
+        return translation;
+    }
+
+    /**
+     *  Converts an "english" word to its piglatin form
+     *
+     * @param  englishWord  a string representing an english word
+     * @return              piglatin form of the english word
+     */
+    public String wordToPigLatin(String englishWord)
+    {
+        String pigLatinWord = "";
+        String vowels = "AEIOUaeiou";
+        boolean vowelFound = false;
+        int firstVowel = 0;
+        boolean capitalized = false;
+        if (englishWord.substring(0, 1).toUpperCase().equals(englishWord.
+        substring(0,1))) {
+            capitalized = true;
+        }
+        for (int i = 0; i < englishWord.length(); i++) {
+            if (vowels.contains(englishWord.substring(i, i + 1)) && !vowelFound)
+            {
+                vowelFound = true;
+                firstVowel = i;
+            }
+            if (i == 0 && vowelFound) {
+                pigLatinWord = englishWord + "yay";
+                break;
+            }
+            else if (i != 0 && vowelFound) {
+                String start = englishWord.substring(0, firstVowel);
+                String end = englishWord.substring(firstVowel, englishWord.
+                length());
+                if (capitalized) {
+                    pigLatinWord = end.substring(0, 1).toUpperCase() + end.
+                    substring(1, end.length()) + start.substring(0, 1).
+                    toLowerCase() + start.substring(1, start.length()) + "ay";
+                }
+                else {
+                    pigLatinWord = end + start + "ay";
+                }
+                break;
+            }
+        }
+
+        return pigLatinWord;
+    }
+
+    // TODO add additional helper methods
+
+}

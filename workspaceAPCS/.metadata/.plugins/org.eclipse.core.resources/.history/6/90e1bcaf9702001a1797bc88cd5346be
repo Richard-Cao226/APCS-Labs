@@ -1,0 +1,75 @@
+import java.util.ArrayList;
+
+public class DocumentIndex extends ArrayList<IndexEntry>
+{
+    //  Creates an empty DocumentIndex with the default
+    // initial capacity.
+    public DocumentIndex()
+    {
+        super();
+    }
+
+    //  Creates an empty DocumentIndex with a given
+    //  initial capacity.
+    public DocumentIndex(int initialCapacity)
+    {
+        super(initialCapacity);
+    }
+
+    //  If word is not yet in this DocumentIndex,
+    //  creates a new IndexEntry for word, and inserts
+    //  it into this list in alphabetical order;
+    //  adds num to this word's IndexEntry by calling
+    //  its add(num) method.
+    public void addWord(String word, int num)
+    {
+        boolean inList = false;
+        String alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        word = word.toUpperCase();
+        for (IndexEntry obj : this) {
+            if (obj.getWord().equals(word)) {
+                inList = true;
+                break;
+            }
+        }
+        int letterInd = 0;
+        int ind = 0;
+        boolean next = false;
+        if (!inList) {
+            for (IndexEntry obj : this) {
+                while (!next) {
+                    if (alpha.indexOf(obj.getWord().charAt(letterInd)) < alpha.indexOf(word)) {
+                        next = true;
+                    }
+                    else if (alpha.indexOf(obj.getWord().charAt(letterInd)) == alpha.indexOf(word)) {
+                        letterInd++;
+                    }
+                    else {
+                        this.add(ind, new IndexEntry(word));
+                        this.get(ind).add(num);
+                    }
+                }
+            }
+        }
+    }
+
+    //  For each word in str, calls addWord(word, num).
+    public void addAllWords(String str, int num)
+    {
+        for (String s : str.split("\\W+")) {
+            if (!s.equals("")) {
+                addWord(s, num);
+            }
+        }
+    }
+
+    // Tries to find an EndexEntry with a given word in this
+    // DocumentIndex.  If not found, inserts a new EndexEntry for
+    // word at the appropriate place (in lexicographical order).
+    // Returns the index of the found or inserted IndexEntry
+    private int foundOrInserted(String word)
+    {
+        // TODO complete method
+        return 0;  // TODO Fix this!!
+    }
+}

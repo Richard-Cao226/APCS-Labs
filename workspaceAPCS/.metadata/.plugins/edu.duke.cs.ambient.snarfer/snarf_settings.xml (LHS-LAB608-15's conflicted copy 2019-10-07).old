@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<settings settings_version="1.0">
+<sites>
+<site siteurl="http://cs.lhs.fuhsd.org/apcssnarf/snarf.xml"/>
+</sites>
+<history>
+<install date="08.24.2019.11.37.55" location="C:\Users\Richard\Dropbox\workspaceAPCS\JMCh02_Hello" name="JMCh02_Hello" publisher="gkp" version="1.0"/>
+<install date="08.24.2019.11.39.03" location="C:\Users\Richard\Dropbox\workspaceAPCS\JMCh02Exer" name="JMCh02Exer" publisher="gkp" version="1.0"/>
+<install date="08.28.2019.05.43.46" location="C:\Users\Richard\Dropbox\workspaceAPCS\GridWorld_JMCh3_7RandomBugs" name="GridWorld_JMCh3_7RandomBugs" publisher="gkp" version="1.0"/>
+<install date="08.29.2019.12.20.17" location="C:\Users\rcao266\Dropbox\workspaceAPCS\APCSElevensActivity1" name="APCSElevensActivity1" publisher="gkp" version="1.0"/>
+<install date="09.03.2019.10.36.29" location="C:\Users\rcao266\Dropbox\workspaceAPCS\A3_2Coins" name="A3_2Coins" publisher="gkp" version="1.0"/>
+<install date="09.05.2019.12.38.02" location="C:\Users\rcao266\Dropbox\workspaceAPCS\A3_1Easter" name="A3_1Easter" publisher="gkp" version="1.1"/>
+<install date="09.06.2019.10.31.39" location="C:\Users\rcao266\Dropbox\workspaceAPCS\JMCh06_10PieChart" name="JMCh06_10PieChart" publisher="gkp" version="1.1"/>
+<install date="09.19.2019.12.20.09" location="C:\Users\rcao266\Dropbox\workspaceAPCS\JMCh04Ex16_Ornament" name="JMCh04Ex16_Ornament" publisher="gkp" version="1.1"/>
+<install date="09.19.2019.12.57.10" location="C:\Users\rcao266\Dropbox\workspaceAPCS\A12_6ParallelLines" name="A12_6ParallelLines" publisher="gkp" version="1.1"/>
+<install date="09.20.2019.10.52.53" location="C:\Users\rcao266\Dropbox\workspaceAPCS\A12_1FunLoops" name="A12_1FunLoops" publisher="gkp" version="1.1"/>
+<install date="09.24.2019.10.41.58" location="C:\Users\rcao266\Dropbox\workspaceAPCS\JMCh08_PerfectNumbers" name="JMCh08_PerfectNumbers" publisher="gkp" version="1.0"/>
+<install date="09.27.2019.10.56.18" location="C:\Users\rcao266\Dropbox\workspaceAPCS\JMCh09_SnackBar" name="JMCh09_SnackBar" publisher="gkp" version="1.2"/>
+</history>
+</settings>

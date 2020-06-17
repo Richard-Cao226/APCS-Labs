@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="C:\Users\rcao266\Dropbox\workspaceAPCS\JMCh12_11Chomp"/>
+		<item value="C:\Users\Richard\Dropbox\workspaceAPCS\GridWorld_JMCh3_7RandomBugs"/>
+		<item value="C:\Users\Richard\Dropbox\workspaceAPCS\A11_1BackToSchool"/>
+		<item value="C:\Users\rcao266\Dropbox\workspaceAPCS\A11_1BackToSchool"/>
+		<item value="C:\Users\rcao266\Dropbox\workspaceAPCS\JMCh09_SnackBar"/>
+		<item value="C:\Users\Richard\Dropbox\workspaceAPCS\JMCh07_RollingDice"/>
+		<item value="C:\Users\Richard\Dropbox\workspaceAPCS\JMCh06_10PieChart"/>
+		<item value="C:\Users\Richard\Dropbox\workspaceAPCS\A3_2Coins"/>
+		<item value="C:\Users\Richard\Dropbox\workspaceAPCS\A3_1Easter"/>
+		<item value="C:\Users\rcao266\Dropbox\workspaceAPCS\JMCh07_RollingDice"/>
+		<item value="C:\Users\Richard\Dropbox\workspaceAPCS\JMCh02_Hello"/>
+		<item value="C:\Users\Richard\Dropbox\workspaceAPCS\JMCh02Exer"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="160"/>
+		<item key="DIALOG_Y_ORIGIN" value="134"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
+</section>

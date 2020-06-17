@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<settings settings_version="1.0">
+<sites>
+<site siteurl="http://205.173.41.10/apcssnarf/snarf.xml"/>
+</sites>
+<history>
+<install date="08.22.2019.12.31.38" location="C:\Users\rcao266\Dropbox\workspaceAPCS\JMCh02Exer" name="JMCh02Exer" publisher="gkp" version="1.0"/>
+<install date="08.22.2019.12.34.31" location="C:\Users\rcao266\Dropbox\workspaceAPCS\JMCh02_Hello" name="JMCh02_Hello" publisher="gkp" version="1.0"/>
+</history>
+</settings>

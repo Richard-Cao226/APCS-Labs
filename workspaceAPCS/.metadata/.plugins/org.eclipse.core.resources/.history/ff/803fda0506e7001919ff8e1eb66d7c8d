@@ -1,0 +1,24 @@
+/**
+ * Represents a complex number of the form a + bi. Provides methods for
+ * adding, multiplying and calculating the absolute value.
+ *
+ *  @author  TODO Your Name
+ *  @version TODO Date
+ *  @author  Period: TODO Your Period
+ *  @author  Assignment: JMCh09Ex17_Complex 
+ *
+ *  @author  Sources: TODO List collaborators
+ */
+public class Complex
+{
+    // TODO instance variables
+    
+    // TODO Constructors
+    
+    // TODO Methods
+
+    public String toString()
+    {
+        return a + " + " + b + "i";
+    }
+}

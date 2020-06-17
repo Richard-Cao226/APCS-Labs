@@ -1,0 +1,70 @@
+/**
+   TODO Write a one-sentence summary of your class here.
+   TODO Follow it with additional details about its purpose, what abstraction
+   it represents, and how to use it.
+
+   @author  TODO Your Name
+   @version TODO Date
+
+   @author  Period - TODO Your Period
+   @author  Assignment - TODO Assignment Name
+
+   @author  Sources - TODO list collaborators
+ */
+public class Heapsort
+{
+    // Sorts a[0], ..., a[size-1] in ascending order
+    //   using the Mergesort algorithm
+    public static void sort(double[] a)
+    {
+        int n = a.length;
+        for (int i = n/2; i >= 1; i--)
+            reheapDown(a, i, n);
+        while (n > 1)
+        {
+        // swap a[0] with a[n-1]:
+            double temp = a[0];
+            a[0] = a[n-1];
+            a[n-1] = temp;
+            n--;
+            reheapDown(a, 1, n);
+        }
+    }
+
+    // Should be private - made public for testing
+    public static void reheapDown(double[] a, int i, int n)
+    {
+        int root = i - 1;
+        while (root * 2 + 1 < n) {
+            int left = root * 2 + 1;
+            int right = root * 2 + 2;
+            if (right == n)
+                if (a[root] > a[left]) {
+                    break;
+                }
+                else {
+                	double temp = a[left];
+                	a[left] = a[root];
+                	a[root] = temp;
+                	root = root * 2 + 1;
+                	break;
+                }
+            
+            if (a[root] >= a[left] && a[root] >= a[right]) {
+                break;
+            }
+            if (a[left] > a[right]) {
+                double temp = a[left];
+                a[left] = a[root];
+                a[root] = temp;
+                root = root * 2 + 1;
+            }
+            else {
+                double temp = a[right];
+                a[right] = a[root];
+                a[root] = temp;
+                root = (root + 2) * 2;
+            }
+        }
+    }
+}

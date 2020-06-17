@@ -1,0 +1,163 @@
+import java.lang.reflect.*;
+import java.util.*;
+
+/**
+ * Represents a brokerage.
+ * @author Richard Cao rcao266
+ * @version 4/10/2020
+ */
+public class Brokerage implements Login
+{
+    private Map<String, Trader> traders;
+    private Set<Trader> loggedTraders;
+    private StockExchange exchange;
+
+    // TODO complete class
+    /**
+     * Brokerage Constructor
+     * @param exchange stock exchange
+     */
+    public Brokerage(StockExchange exchange) {
+        this.exchange = exchange;
+        traders = new TreeMap<String, Trader>();
+        loggedTraders = new TreeSet<Trader>();
+    }
+    
+    /**
+     * adds user to traders
+     * @param name of user
+     * @param password of user
+     * @return int negative if failed
+     */
+    public int addUser(String name, String password) {
+        if (name.length() < 4 || name.length() > 10) {
+            return -1;
+        }
+        else if (password.length() < 2 || password.length() > 10) {
+            return -2;
+        }
+        else if (traders.containsKey(name)) {
+            return -3;
+        }
+        else {
+            Trader trader = new Trader(this, name, password);
+            traders.put(name, trader);
+            return 0;
+        }
+    }
+
+    /**
+     * logs trader in
+     * @return int negative if failed
+     */
+    public int login(String name, String password) {
+        if (!traders.containsKey(name)) {
+            return -1;
+        }
+        else if (!traders.get(name).getPassword().equals(password)) {
+            return -2;
+        }
+        else if (loggedTraders.contains(traders.get(name))) {
+            return -3;
+        }
+        else {
+            Trader trader = traders.get(name);
+            if (!trader.hasMessages()) {
+                trader.receiveMessage("Welcome to SafeTrade!");
+            }
+            trader.openWindow();
+            loggedTraders.add(trader);
+            return 0;
+        }
+    }
+    
+    /**
+     * logs trader out
+     * @param trader to log out
+     */
+    public void logout(Trader trader) {
+        loggedTraders.remove(trader);
+    }
+    
+    /**
+     * gets quote of stock
+     * @param symbol of stock
+     * @param trader to send quote to
+     */
+    public void getQuote(String symbol, Trader trader) {
+        trader.receiveMessage(exchange.getQuote(symbol));
+    }
+    
+    /**
+     * places trade order
+     * @param order to place
+     */
+    public void placeOrder(TradeOrder order) {
+        exchange.placeOrder(order);
+    }
+
+    
+    //
+    // The following are for test purposes only
+    //
+    /**
+     * returns traders
+     * @return map of traders
+     */
+    protected Map<String, Trader> getTraders()
+    {
+        return traders;
+    }
+
+    /**
+     * returns logged traders
+     * @return set of logged traders
+     */
+    protected Set<Trader> getLoggedTraders()
+    {
+        return loggedTraders;
+    }
+
+    /**
+     * returns stock exchange
+     * @return StockExchange for the brokerage
+     */
+    protected StockExchange getExchange()
+    {
+        return exchange;
+    }
+
+    /**
+     * <p>
+     * A generic toString implementation that uses reflection to print names and
+     * values of all fields <em>declared in this class</em>. Note that
+     * superclass fields are left out of this implementation.
+     * </p>
+     * 
+     * @return a string representation of this Brokerage.
+     */
+    public String toString()
+    {
+        String str = this.getClass().getName() + "[";
+        String separator = "";
+
+        Field[] fields = this.getClass().getDeclaredFields();
+
+        for ( Field field : fields )
+        {
+            try
+            {
+                str += separator + field.getType().getName() + " "
+                    + field.getName() + ":" + field.get( this );
+            }
+            catch ( IllegalAccessException ex )
+            {
+                System.out.println( ex );
+            }
+
+            separator = ", ";
+        }
+
+        return str + "]";
+    }
+}

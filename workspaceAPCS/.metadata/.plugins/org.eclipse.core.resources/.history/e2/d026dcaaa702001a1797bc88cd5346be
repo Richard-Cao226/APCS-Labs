@@ -1,0 +1,94 @@
+import java.util.ArrayList;
+
+/**
+ * DocumentIndex class
+ * @author Richard Cao
+ * @version 11/8
+ */
+public class DocumentIndex extends ArrayList<IndexEntry>
+{
+    //  Creates an empty DocumentIndex with the default
+    // initial capacity.
+    /**
+     * no parameter constructor
+     */
+    public DocumentIndex()
+    {
+        super();
+    }
+
+    //  Creates an empty DocumentIndex with a given
+    //  initial capacity.
+    /**
+     * Constructor with 1 parameter
+     * @param initialCapacity of arrayList
+     */
+    public DocumentIndex(int initialCapacity)
+    {
+        super(initialCapacity);
+    }
+
+    //  If word is not yet in this DocumentIndex,
+    //  creates a new IndexEntry for word, and inserts
+    //  it into this list in alphabetical order;
+    //  adds num to this word's IndexEntry by calling
+    //  its add(num) method.
+    /**
+     * adds Word
+     * @param word to add
+     * @param num to add
+     */
+    public void addWord(String word, int num)
+    {
+        this.get(foundOrInserted(word)).add(num);
+    }
+
+    //  For each word in str, calls addWord(word, num).
+    /**
+     * adds all words
+     * @param str with words
+     * @param num to add
+     */
+    public void addAllWords(String str, int num)
+    {
+        for (String s : str.split("\\W+")) {
+            if (!s.equals("")) {
+                addWord(s, num);
+            }
+        }
+    }
+
+    // Tries to find an EndexEntry with a given word in this
+    // DocumentIndex.  If not found, inserts a new EndexEntry for
+    // word at the appropriate place (in lexicographical order).
+    // Returns the index of the found or inserted IndexEntry
+    /**
+     * checks where to insert word
+     * @param word to insert
+     * @return index to insert word
+     */
+    private int foundOrInserted(String word)
+    {
+        int pos = 0;
+        boolean inList = false;
+        for (int i = 0; i < this.size(); i++) {
+            if (this.get(i).getWord().compareToIgnoreCase(word) == 0) {
+                inList = true;
+                pos = i;
+                break;
+            }
+        }
+        if (!inList) {
+            for (int i = 0; i < this.size(); i++) {
+                if (this.get(i).getWord().compareToIgnoreCase(word) > 0) {
+                    this.add(i, new IndexEntry(word));
+                    pos = i;
+                }
+            }
+            return pos;
+        }
+        else {
+            return pos;
+        }
+    }
+}

@@ -1,0 +1,82 @@
+import java.util.*;
+/**
+ * Represents a complex number of the form a + bi. Provides methods for
+ * adding, multiplying and calculating the absolute value.
+ *
+ *  @author  Richard Cao
+ *  @version 10/4
+ *  @author  Period: 3
+ *  @author  Assignment: JMCh09Ex17_Complex 
+ *
+ *  @author  Sources: Richard Cao
+ */
+public class Complex
+{
+    private double a;
+    private double b;
+    /**
+     * Constructor with 1 parameter
+     * @param a value
+     */
+    public Complex(double a) {
+        this.a = a;
+    }
+    /**
+     * Constructor with 2 parameters
+     * @param a value
+     * @param b value
+     */
+    public Complex(double a, double b) {
+        this.a = a;
+        this.b = b;
+    }
+    /**
+     * calculates magnitude
+     * @return double magnitude
+     */
+    public double abs() {
+        return Math.sqrt(a * a + b * b);
+    }
+    /**
+     * adds two complex numbers
+     * @param other complex number
+     * @return Complex number
+     */
+    public Complex add(Complex other) {
+        return new Complex(a + other.a, b + other.b);
+    }
+    /**
+     * converts to string
+     * @return String of complex number
+     */
+    public String toString()
+    {
+        return a + " + " + b + "i";
+    }
+    /**
+     * multiplies two complex numbers
+     * @param other complex number
+     * @return Complex product
+     */
+    public Complex multiply(Complex other) {
+    	double newA = a * other.a + -b * other.b;
+    	double newB = a * other.b + b * other.a;
+        return new Complex(newA, newB);
+    }
+    /**
+     * adds a real number to a complex number
+     * @param add real number
+     * @return Complex number
+     */
+    public Complex add(double add) {
+        return new Complex(a + add, b);
+    }
+    /**
+     * multiples complex number by real number
+     * @param fact to multiply by
+     * @return Complex number
+     */
+    public Complex multiply(double fact) {
+        return new Complex(a * fact, b * fact);
+    }
+}
